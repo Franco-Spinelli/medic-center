@@ -10,7 +10,7 @@ import java.util.Optional;
 @Service
 public interface MedicalRecordService {
     List<MedicalRecord> findAll();
-    Optional<MedicalRecord> findByPatientId(Integer id);
+    MedicalRecord findByPatientId(Integer id);
     void save (MedicalRecord medicalRecord);
-    void delete(MedicalRecord medicalRecord);
+    void delete(Integer id);
 }

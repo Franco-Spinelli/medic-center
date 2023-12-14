@@ -12,5 +12,5 @@ public interface AppointmentService {
     List<Appointment> findAll();
     Optional<Appointment> findById(Integer id);
     void save (Appointment appointment);
-    void delete(Appointment appointment);
+    void delete(Integer id_appointment);
 }

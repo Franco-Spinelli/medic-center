@@ -31,6 +31,9 @@ public class Patient {
     private float weight;
     @Column(name = "height")
     private float height;
+    @ManyToOne
+    @JoinColumn(name = "id_bedroom")
+    private Bedroom bedroom;
     @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private MedicalRecord medicalRecord;
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

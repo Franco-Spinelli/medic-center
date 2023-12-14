@@ -1,6 +1,7 @@
 package com.example.Medic.Center.model.dto;
 
 import com.example.Medic.Center.model.entity.Appointment;
+import com.example.Medic.Center.model.entity.Bedroom;
 import com.example.Medic.Center.model.entity.MedicalRecord;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -23,6 +24,7 @@ public class PatientDTO {
     private Integer age;
     private float weight;
     private float height;
+    private BedroomDTO bedroom;
     private MedicalRecordDTO medicalRecord;
     private List<AppointmentDTO> appointmentList = new ArrayList<>();
 }

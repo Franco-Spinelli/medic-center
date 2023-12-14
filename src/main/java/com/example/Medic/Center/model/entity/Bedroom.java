@@ -21,6 +21,12 @@ public class Bedroom {
     private Integer id_bedroom;
     @Column(name = "hospitalSector")
     private String hospitalSector;
+    @Column(name = "occupancyStatus")
+    private boolean occupancyStatus;
+    @Column(name = "capacity")
+    private Integer capacity;
+    @OneToOne(mappedBy = "bedroom", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    private List<Patient>patientList = new ArrayList<>();
     @ManyToMany(mappedBy = "bedrooms")
     private List<Appointment> appointmentList = new ArrayList<>();
 }
