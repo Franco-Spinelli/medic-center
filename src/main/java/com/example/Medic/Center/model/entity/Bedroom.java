@@ -25,8 +25,6 @@ public class Bedroom {
     private boolean occupancyStatus;
     @Column(name = "capacity")
     private Integer capacity;
-    @OneToOne(mappedBy = "bedroom", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "bedroom", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<Patient>patientList = new ArrayList<>();
-    @ManyToMany(mappedBy = "bedrooms")
-    private List<Appointment> appointmentList = new ArrayList<>();
 }

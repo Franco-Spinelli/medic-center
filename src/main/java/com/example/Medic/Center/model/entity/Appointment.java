@@ -30,11 +30,4 @@ public class Appointment {
     @ManyToOne
     @JoinColumn(name = "id_patient")
     private Patient patient;
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "appointment_bedroom",
-            joinColumns = @JoinColumn(name = "id_appointment"),
-            inverseJoinColumns = @JoinColumn(name = "id_bedroom")
-    )
-    private List<Bedroom> bedrooms = new ArrayList<>();
 }

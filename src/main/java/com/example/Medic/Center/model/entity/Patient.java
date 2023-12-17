@@ -25,7 +25,7 @@ public class Patient {
     private String lastName;
     @Column(name = "dni")
     private String dni;
-    @Column(name = "nage")
+    @Column(name = "age")
     private Integer age;
     @Column(name = "weight")
     private float weight;

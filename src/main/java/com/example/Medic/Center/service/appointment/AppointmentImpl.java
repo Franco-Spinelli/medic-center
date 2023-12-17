@@ -19,8 +19,6 @@ import java.util.Optional;
 public class AppointmentImpl implements AppointmentService{
     @Autowired
     private AppointmentRepository appointmentRepository;
-    @Autowired
-    private BedroomService bedroomService;
 
     @Override
     public List<Appointment> findAll() {
@@ -35,15 +33,6 @@ public class AppointmentImpl implements AppointmentService{
 
     @Override
     public void save(Appointment appointment) {
-        List<Bedroom> bedrooms = appointment.getBedrooms();
-        Patient patient = appointment.getPatient();
-        for (Bedroom bedroom: bedrooms) {
-            try {
-                bedroomService.addPatientInBedroomById(patient.getId_patient(),bedroom.getId_bedroom());
-            }catch (RoomOccupiedException e){
-                System.out.printf(e.getMessage());
-            }
-        }
         appointmentRepository.save(appointment);
     }
 

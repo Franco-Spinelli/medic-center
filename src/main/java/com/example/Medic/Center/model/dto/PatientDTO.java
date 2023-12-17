@@ -24,7 +24,7 @@ public class PatientDTO {
     private Integer age;
     private float weight;
     private float height;
-    private BedroomDTO bedroom;
+    private Integer id_bedroom;
     private MedicalRecordDTO medicalRecord;
     private List<AppointmentDTO> appointmentList = new ArrayList<>();
 }

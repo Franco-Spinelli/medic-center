@@ -23,5 +23,4 @@ public class AppointmentDTO {
     private String appointment_time;
     private Integer id_doctor;
     private Integer id_patient;
-    private List<BedroomDTO> bedrooms = new ArrayList<>();
 }
