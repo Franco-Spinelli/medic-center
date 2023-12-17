@@ -18,8 +18,7 @@ import java.util.List;
 @Builder
 public class MedicalRecordDTO {
     private Integer id_medicalRecord;
-    private List<String> previousIllnesses;
-    private  List<String> vaccinationRecord;
-    private  List<String> currentMedications;
+    private String previousIllness;
+    private  String currentMedication;
     private Integer id_patient;
 }
