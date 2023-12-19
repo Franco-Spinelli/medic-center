@@ -54,3 +54,15 @@ INSERT INTO medical_record (previous_illness, current_medication, id_patient) VA
 INSERT INTO medical_record (previous_illness, current_medication, id_patient) VALUES ('Heart Disease', 'Aspirin', 8);
 INSERT INTO medical_record (previous_illness, current_medication, id_patient) VALUES ('None', 'None', 9);
 INSERT INTO medical_record (previous_illness, current_medication, id_patient) VALUES ('None', 'None', 10);
+
+-- Insert appointments
+INSERT INTO appointment (appointment_date, appointment_time, id_doctor, id_patient) VALUES ('2023-12-15', '10:00 AM', 1, 1);
+INSERT INTO appointment (appointment_date, appointment_time, id_doctor, id_patient) VALUES ('2023-12-16', '02:30 PM', 2, 2);
+INSERT INTO appointment (appointment_date, appointment_time, id_doctor, id_patient) VALUES ('2023-12-17', '09:15 AM', 3, 3);
+INSERT INTO appointment (appointment_date, appointment_time, id_doctor, id_patient) VALUES ('2023-12-18', '11:00 AM', 4, 4);
+INSERT INTO appointment (appointment_date, appointment_time, id_doctor, id_patient) VALUES ('2023-12-19', '03:45 PM', 5, 5);
+INSERT INTO appointment (appointment_date, appointment_time, id_doctor, id_patient) VALUES ('2023-12-20', '01:30 PM', 6, 6);
+INSERT INTO appointment (appointment_date, appointment_time, id_doctor, id_patient) VALUES ('2023-12-21', '10:45 AM', 7, 7);
+INSERT INTO appointment (appointment_date, appointment_time, id_doctor, id_patient) VALUES ('2023-12-22', '04:20 PM', 8, 8);
+INSERT INTO appointment (appointment_date, appointment_time, id_doctor, id_patient) VALUES ('2023-12-23', '12:15 PM', 9, 9);
+INSERT INTO appointment (appointment_date, appointment_time, id_doctor, id_patient) VALUES ('2023-12-24', '08:30 AM', 10, 10);
