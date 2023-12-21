@@ -8,11 +8,12 @@ import com.example.Medic.Center.repository.PatientRepository;
 import com.example.Medic.Center.service.patient.PatientService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-
+@Component
 public class BedroomImpl implements BedroomService{
     @Autowired
     private BedroomRepository bedroomRepository;
@@ -71,8 +72,8 @@ public class BedroomImpl implements BedroomService{
 
         }
         Patient patient = patientOptional.get();
-        bedroom.getPatientList().add(patient);
-        if(bedroom.getPatientList().size() == bedroom.getCapacity()){
+
+        if(bedroom.getPatientList().size() + 1 == bedroom.getCapacity()){
             bedroom.setOccupancyStatus(true);
         }
         bedroomRepository.save(bedroom);

@@ -19,6 +19,6 @@ public class DoctorDTO {
     private Integer id_doctor;
     private String name;
     private String lastName;
-    private MedicalSpecialtyDTO medicalSpecialty;
+    private String medicalSpecialty;
     private List<AppointmentDTO> appointmentList = new ArrayList<>();
 }
