@@ -24,36 +24,13 @@ public class PatientController {
     private PatientService patientService;
     @GetMapping("/findAll")
     public ResponseEntity<?>findAll(){
-        List<PatientDTO>patientDTOList = patientService.findAll().stream()
-                .map(patient -> PatientDTO.builder()
-                        .id_patient(patient.getId_patient())
-                        .age(patient.getAge())
-                        .name(patient.getName())
-                        .dni(patient.getDni())
-                        .lastName(patient.getLastName())
-                        .height(patient.getHeight())
-                        .weight(patient.getWeight())
-                        /*
-                        .medicalRecord(MedicalRecordDTO.builder()
-                                .id_patient(patient.getId_patient())
-                                .id_medicalRecord(patient.getMedicalRecord().getId_medicalRecord())
-                                .currentMedication(patient.getMedicalRecord().getCurrentMedication())
-                                .previousIllness(patient.getMedicalRecord().getPreviousIllness()).build())
+        List<Patient>patientList = patientService.findAll();
+        List<PatientDTO>patientDTOList = new ArrayList<>();
+        for (Patient patient:patientList) {
+            PatientDTO patientDTO = new PatientDTO(patient);
+            patientDTOList.add(patientDTO);
+        }
 
-                         */
-                        .id_bedroom((patient.getBedroom().getId_bedroom()!= null && patient.getBedroom().getId_bedroom() > 0) ? patient.getBedroom().getId_bedroom() : 0)
-                        /*
-                        .appointmentList(patient.getAppointmentList().stream()
-                                .map(appointment -> AppointmentDTO.builder()
-                                        .id_appointment(appointment.getId_appointment())
-                                        .id_patient(appointment.getPatient().getId_patient())
-                                        .date(appointment.getDate())
-                                        .id_doctor(appointment.getDoctor().getId_doctor())
-                                        .appointment_time(appointment.getAppointment_time())
-                                        .build()).toList())
-
-                         */
-                        .build()).toList();
         return ResponseEntity.ok(patientDTOList);
     }
     @PostMapping("/save")

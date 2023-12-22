@@ -7,10 +7,7 @@ import com.example.Medic.Center.model.entity.Doctor;
 import com.example.Medic.Center.service.doctor.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -41,5 +38,10 @@ public class DoctorController {
                                         .id_patient(appointment.getPatient().getId_patient()).build()).toList()
                         ).build()).toList();
         return ResponseEntity.ok(doctorDTOList);
+    }
+    @PostMapping("/save")
+    public ResponseEntity<?>save(@RequestBody Doctor doctor){
+        doctorService.save(doctor);
+        return ResponseEntity.ok("Save success ");
     }
 }

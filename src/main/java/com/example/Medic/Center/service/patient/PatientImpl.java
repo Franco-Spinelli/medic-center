@@ -34,6 +34,7 @@ public class PatientImpl implements PatientService{
 
     @Override
     public void save(Patient patient){
+        //if the patient have -0 age throws the exception.
         if(patient.getAge()<0){
             throw new IllegalArgumentException("The patient's age cannot be negative.");
         }
@@ -42,6 +43,7 @@ public class PatientImpl implements PatientService{
 
     @Override
     public void delete(Patient patient) {
+        //if the patient not exist throws the exception.
         if (!patientRepository.existsById(patient.getId_patient())) {
             throw new EntityNotFoundException("Patient with ID: " + patient.getId_patient() + " not found.");
         }

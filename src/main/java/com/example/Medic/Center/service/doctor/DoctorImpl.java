@@ -33,6 +33,7 @@ public class DoctorImpl implements DoctorService{
 
     @Override
     public void delete(Doctor doctor) {
+        //if the doctor not exist throws the exception.
         if(!doctorRepository.existsById(doctor.getId_doctor())){
             throw new EntityNotFoundException("Doctor with ID: " + doctor.getId_doctor() + " not found.");
         }
