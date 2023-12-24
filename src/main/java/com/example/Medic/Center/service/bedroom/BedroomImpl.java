@@ -52,15 +52,17 @@ public class BedroomImpl implements BedroomService{
 
     @Override
     public void increaseSize(Integer number, Integer id_bedroom) {
-        Optional<Bedroom>bedroomOptional = bedroomRepository.findById(id_bedroom);
-        //if the room not exist throws the exception.
-        if(bedroomOptional.isEmpty()){
-            throw new EntityNotFoundException("Bedroom with ID: " + bedroomOptional.get().getId_bedroom() + " not found.");
+        if(number>0) {
+            Optional<Bedroom> bedroomOptional = bedroomRepository.findById(id_bedroom);
+            //if the room not exist throws the exception.
+            if (bedroomOptional.isEmpty()) {
+                throw new EntityNotFoundException("Bedroom with ID: " + bedroomOptional.get().getId_bedroom() + " not found.");
+            }
+            Bedroom bedroom = bedroomOptional.get();
+            //change the bedroom capacity.
+            bedroom.setCapacity(bedroom.getCapacity() + number);
+            bedroomRepository.save(bedroom);
         }
-        Bedroom bedroom = bedroomOptional.get();
-        //change the bedroom capacity.
-        bedroom.setCapacity(bedroom.getCapacity() + number);
-        bedroomRepository.save(bedroom);
     }
 
     @Override

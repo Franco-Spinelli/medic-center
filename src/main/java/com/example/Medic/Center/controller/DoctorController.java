@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -23,20 +24,12 @@ public class DoctorController {
         if(doctorService.findAll().isEmpty()){
             return ResponseEntity.notFound().build();
         }
-        List<DoctorDTO>doctorDTOList = doctorService.findAll().stream()
-                .map(doctor -> DoctorDTO.builder()
-                        .id_doctor(doctor.getId_doctor())
-                        .name(doctor.getName())
-                        .lastName(doctor.getLastName())
-                        .medicalSpecialty(doctor.getMedicalSpecialty().getTitle())
-                        .appointmentList(doctor.getAppointmentList().stream()
-                                .map(appointment -> AppointmentDTO.builder()
-                                        .date(appointment.getDate())
-                                        .appointment_time(appointment.getAppointment_time())
-                                        .id_appointment(appointment.getId_appointment())
-                                        .id_doctor(doctor.getId_doctor())
-                                        .id_patient(appointment.getPatient().getId_patient()).build()).toList()
-                        ).build()).toList();
+        List<Doctor>doctorList = doctorService.findAll();
+        List<DoctorDTO>doctorDTOList = new ArrayList<>();
+        for (Doctor doctor:doctorList) {
+            DoctorDTO doctorDTO = new DoctorDTO(doctor);
+            doctorDTOList.add(doctorDTO);
+        }
         return ResponseEntity.ok(doctorDTOList);
     }
     @PostMapping("/save")

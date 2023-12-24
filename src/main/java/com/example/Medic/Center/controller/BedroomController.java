@@ -2,8 +2,10 @@ package com.example.Medic.Center.controller;
 
 import com.example.Medic.Center.model.dto.AssignBedroomDTO;
 import com.example.Medic.Center.model.dto.BedroomDTO;
+import com.example.Medic.Center.model.dto.SizeBedroomDTO;
 import com.example.Medic.Center.model.entity.Bedroom;
 import com.example.Medic.Center.service.bedroom.BedroomService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,16 +32,33 @@ public class BedroomController {
 
     @PutMapping("/assignBedroom")
     public ResponseEntity<?>assignBedroom(@RequestBody AssignBedroomDTO assignBedroomDTO){
-        bedroomService.addPatientInBedroomById(assignBedroomDTO.getId_patient(),assignBedroomDTO.getId_bedroom());
-        return ResponseEntity.ok().build();
+        try {
+            bedroomService.addPatientInBedroomById(assignBedroomDTO.getId_patient(),assignBedroomDTO.getId_bedroom());
+            return ResponseEntity.ok().build();
+        }catch (EntityNotFoundException e){
+            return  ResponseEntity.notFound().build();
+        }
     }
 
     @PutMapping("/deletePatientInBedroom")
     public ResponseEntity<?>deletePatientInBedroom(@RequestBody AssignBedroomDTO assignBedroomDTO){
-        bedroomService.deletePatientInBedroomById(assignBedroomDTO.getId_patient(),assignBedroomDTO.getId_bedroom());
-        return ResponseEntity.ok().build();
+        try {
+            bedroomService.deletePatientInBedroomById(assignBedroomDTO.getId_patient(), assignBedroomDTO.getId_bedroom());
+            return ResponseEntity.ok().build();
+        }catch (EntityNotFoundException e){
+            return  ResponseEntity.notFound().build();
+        }
     }
 
+    @PutMapping("/increaseSize")
+    public ResponseEntity<?>increaseSize(@RequestBody SizeBedroomDTO sizeBedroomDTO) {
+        try {
+            bedroomService.increaseSize(sizeBedroomDTO.getNumber(), sizeBedroomDTO.getId_bedroom());
+            return ResponseEntity.ok("Size incremented");
+        }catch (EntityNotFoundException e){
+            return ResponseEntity.notFound().build();
+        }
 
+    }
 
 }
